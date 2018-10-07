@@ -10,6 +10,19 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    // uuidを使用する
+    public $incrementing = false;
+
+    // uuidを使用する
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->{$model->getKeyName()} = Uuid::generate()->string;
+        });
+    }
+
     /**
      * The attributes that are mass assignable.
      *
