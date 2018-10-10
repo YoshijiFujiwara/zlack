@@ -16,7 +16,7 @@ class CreateWorkspacesTable extends Migration
         Schema::create('workspaces', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('name')->comment('ワークスペース名');
-            $table->string('url')->comment('ワークスペースのURL');
+            $table->string('url')->unique()->comment('ワークスペースのURL');
             $table->timestamps();
             $table->softDeletes();
         });

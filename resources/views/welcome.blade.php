@@ -86,9 +86,7 @@
 
                  @php
 
-                    $user = \App\User::all()->random()->first()->id;
-                    var_dump($user->channels());
-
+                    var_dump(\App\Model\Workspace::latest()->get());
                  @endphp
 
                 <div class="links">

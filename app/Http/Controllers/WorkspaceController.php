@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\WorkspaceResource;
 use App\Model\Workspace;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class WorkspaceController extends Controller
 {
@@ -14,7 +16,8 @@ class WorkspaceController extends Controller
      */
     public function index()
     {
-        return Workspace::latest()->get();
+        // 見やすく
+        return WorkspaceResource::collection(Workspace::latest()->get());
     }
 
     /**
@@ -35,18 +38,17 @@ class WorkspaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Workspace::create($request->all());
+        return response('Created', Response::HTTP_CREATED);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Workspace $workspace
+     * @return Workspace
      */
-    public function show($id)
+    public function show(Workspace $workspace)
     {
-        //
+        return new WorkspaceResource($workspace);
     }
 
     /**
@@ -78,8 +80,9 @@ class WorkspaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Workspace $workspace)
     {
-        //
+        $workspace->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

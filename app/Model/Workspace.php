@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 
 class Workspace extends Model
 {
+    protected $guarded = [];
+
     /**
      * Indicates if the IDs are auto-incrementing.
      *
