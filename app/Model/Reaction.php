@@ -2,9 +2,15 @@
 
 namespace App\Model;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Reaction extends Model
+class Reaction extends Pivot
 {
-    //
+    /**
+     * このリアクションのアイコン
+     */
+    public function icon()
+    {
+        return $this->belongsTo(ReactionIcon::class, 'icon_id');
+    }
 }

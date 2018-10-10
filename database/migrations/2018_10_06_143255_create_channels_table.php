@@ -14,7 +14,8 @@ class CreateChannelsTable extends Migration
     public function up()
     {
         Schema::create('channels', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->string('id')->primary();
+            $table->string('workspace_id');
             $table->string('name')->comment('チャンネル名');
             $table->timestamps();
             $table->softDeletes();

@@ -84,6 +84,13 @@
                     Laravel
                 </div>
 
+                 @php
+
+                    $user = \App\User::all()->random()->first()->id;
+                    var_dump($user->channels());
+
+                 @endphp
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>

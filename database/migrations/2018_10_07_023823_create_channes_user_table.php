@@ -16,7 +16,7 @@ class CreateChannesUserTable extends Migration
         Schema::create('channel_user', function (Blueprint $table) {
             $table->string('user_id');
             $table->string('channel_id');
-            $table->boolean('is_inviting')->default(true)->comment('招待中ならtrue');
+            $table->boolean('is_inviting')->default(0)->comment('招待中ならtrue');
             $table->timestamps();
         });
     }
